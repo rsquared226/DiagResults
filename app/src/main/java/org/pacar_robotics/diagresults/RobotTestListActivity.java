@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -13,8 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import org.pacar_robotics.diagresults.dummy.DummyContent;
 
 import java.util.List;
 
@@ -57,15 +53,15 @@ public class RobotTestListActivity extends AppCompatActivity {
 	}
 
 	private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-		recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(DummyContent.ITEMS));
+		recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(DiagResultsContent.ITEMS));
 	}
 
 	public class SimpleItemRecyclerViewAdapter
 			extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-		private final List<DummyContent.DummyItem> mValues;
+		private final List<DiagResultsContent.DiagResultItem> mValues;
 
-		public SimpleItemRecyclerViewAdapter(List<DummyContent.DummyItem> items) {
+		public SimpleItemRecyclerViewAdapter(List<DiagResultsContent.DiagResultItem> items) {
 			mValues = items;
 		}
 
@@ -80,7 +76,7 @@ public class RobotTestListActivity extends AppCompatActivity {
 		public void onBindViewHolder(final ViewHolder holder, int position) {
 			holder.mItem = mValues.get(position);
 			holder.mIdView.setText(mValues.get(position).id);
-			holder.mContentView.setText(mValues.get(position).content);
+			holder.mContentView.setText(mValues.get(position).longDesc);
 
 			holder.mView.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -113,7 +109,7 @@ public class RobotTestListActivity extends AppCompatActivity {
 			public final View mView;
 			public final TextView mIdView;
 			public final TextView mContentView;
-			public DummyContent.DummyItem mItem;
+			public DiagResultsContent.DiagResultItem mItem;
 
 			public ViewHolder(View view) {
 				super(view);
