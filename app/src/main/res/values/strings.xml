@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">DiagResults</string>
+	<string name="app_name">DiagResults</string>
 	<string name="title_robottest_detail">Robot Test Detail</string>
 </resources>
