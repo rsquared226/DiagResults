@@ -59,7 +59,10 @@ public class RobotTestDetailFragment extends Fragment {
 
 		// Show the dummy content as text in a TextView.
 		if (mItem != null) {
-			((TextView) rootView.findViewById(R.id.robottest_detail)).setText(mItem.longDesc);
+			((TextView) rootView.findViewById(R.id.severity)).setText(mItem.resultSeverity);
+			((TextView) rootView.findViewById(R.id.result_message)).setText(mItem.resultMessage);
+			((TextView) rootView.findViewById(R.id.recommendation)).setText(mItem.recommendation);
+			((TextView) rootView.findViewById(R.id.description)).setText(mItem.longDesc);
 		}
 
 		return rootView;

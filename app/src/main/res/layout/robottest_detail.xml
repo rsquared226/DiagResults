@@ -1,9 +1,36 @@
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          android:id="@+id/robottest_detail"
-          style="?android:attr/textAppearanceLarge"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:padding="16dp"
-          android:textIsSelectable="true"
-          tools:context="org.pacar_robotics.diagresults.RobotTestDetailFragment"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:padding="16dp"
+              tools:context="org.pacar_robotics.diagresults.RobotTestDetailFragment">
+
+	<TextView
+		style="@style/DetailHeader"
+		android:text="Severity"/>
+	<TextView
+		android:id="@+id/severity"
+		style="@style/DetailContent"/>
+
+	<TextView
+		style="@style/DetailHeader"
+		android:text="Result Message"/>
+	<TextView
+		android:id="@+id/result_message"
+		style="@style/DetailContent"/>
+
+	<TextView
+		style="@style/DetailHeader"
+		android:text="Recommendation"/>
+	<TextView
+		android:id="@+id/recommendation"
+		style="@style/DetailContent"/>
+
+	<TextView
+		style="@style/DetailHeader"
+		android:text="Description"/>
+	<TextView
+		android:id="@+id/description"
+		style="@style/DetailContent"/>
+</LinearLayout>
