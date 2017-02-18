@@ -1,14 +1,14 @@
 package org.pacar_robotics.diagresults;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 
 /**
  * An activity representing a single Robot Test detail screen. This
@@ -26,13 +26,19 @@ public class RobotTestDetailActivity extends AppCompatActivity {
 		setSupportActionBar(toolbar);
 
 		FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-		fab.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
-						.setAction("Action", null).show();
-			}
-		});
+
+		// Set FAB color based on result of test
+		DiagResultsContent.DiagResultItem resultItem =
+				DiagResultsContent.ITEM_MAP.get(getIntent().getStringExtra(RobotTestDetailFragment.ARG_ITEM_ID));
+
+		if (resultItem.result.toLowerCase().contains("pass")) {
+			fab.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorTestPassed)));
+			fab.setImageResource(R.drawable.ic_check_white_24dp);
+		} else {
+			fab.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorTestFailed)));
+			fab.setImageResource(R.drawable.ic_close_white_24dp);
+		}
+
 
 		// Show the Up button in the action bar.
 		ActionBar actionBar = getSupportActionBar();
