@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -75,8 +76,17 @@ public class RobotTestListActivity extends AppCompatActivity {
 		@Override
 		public void onBindViewHolder(final ViewHolder holder, int position) {
 			holder.mItem = mValues.get(position);
-			holder.mIdView.setText(mValues.get(position).id);
-			holder.mContentView.setText(mValues.get(position).name);
+
+			// Turn "failed" to "FAIL"
+			holder.mIdView.setText(mValues.get(position).result.replace("ed", "").toUpperCase());
+			// Turn "testFrontLeftMotor" to "Front Left Motor"
+			holder.mContentView.setText(mValues.get(position).name.replace("test", "").replaceAll("(\\p{Ll})(\\p{Lu})","$1 $2"));
+
+			// Make failed test stand out
+			if (mValues.get(position).result.toLowerCase().contains("fail")) {
+				holder.mIdView.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorTestFailed));
+				holder.mContentView.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorTestFailed));
+			}
 
 			holder.mView.setOnClickListener(new View.OnClickListener() {
 				@Override
