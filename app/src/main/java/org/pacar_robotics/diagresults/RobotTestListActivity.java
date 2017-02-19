@@ -79,8 +79,7 @@ public class RobotTestListActivity extends AppCompatActivity {
 
 			// Turn "failed" to "FAIL"
 			holder.mIdView.setText(mValues.get(position).result.replace("ed", "").toUpperCase());
-			// Turn "testFrontLeftMotor" to "Front Left Motor"
-			holder.mContentView.setText(mValues.get(position).name.replace("test", "").replaceAll("(\\p{Ll})(\\p{Lu})","$1 $2"));
+			holder.mContentView.setText(mValues.get(position).name);
 
 			// Make failed test stand out
 			if (mValues.get(position).result.toLowerCase().contains("fail")) {

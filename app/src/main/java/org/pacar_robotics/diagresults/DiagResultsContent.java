@@ -51,7 +51,7 @@ public class DiagResultsContent {
 		                      String result, String resultMessage, String resultSeverity,
 		                      String recommendation) {
 			this.id = id;
-			this.name = name;
+			this.name = name.replace("test", "").replaceAll("(\\p{Ll})(\\p{Lu})","$1 $2");  // "testFrontLeftMotor" -> "Front Left Motor"
 			this.shortDesc = shortDesc;
 			this.longDesc = longDesc;
 			this.result = result;
