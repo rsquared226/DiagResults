@@ -1,9 +1,7 @@
 package org.pacar_robotics.diagresults;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Rahul on 2/12/2017.
@@ -12,26 +10,10 @@ import java.util.Map;
 public class DiagResultsContent {
 
 	public static final List<DiagResultItem> ITEMS = new ArrayList<>();
-	public static final Map<String, DiagResultItem> ITEM_MAP = new HashMap<>();
-
-	private static final int COUNT = 10;
 
 	static {
-		for (int i = 1; i <= COUNT; i++) {
-			addItem(createDiagResultItem(i));
-		}
-	}
-
-	private static void addItem(DiagResultItem item) {
-		ITEMS.add(item);
-		ITEM_MAP.put(item.id, item);
-	}
-
-	private static DiagResultItem createDiagResultItem(int position) {
-		// TODO: Replace with real data
-		return new DiagResultItem(
-				String.valueOf(position), "Motor", "Test Motor", "Makes sure motor runs",
-				"Passed", "No Problem", "HIGH", "No Recommendation");
+		XmlReader xmlReader = new XmlReader();
+		ITEMS.addAll(xmlReader.parseXml());
 	}
 
 	/**

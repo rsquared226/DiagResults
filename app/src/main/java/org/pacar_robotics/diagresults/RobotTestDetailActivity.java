@@ -29,7 +29,7 @@ public class RobotTestDetailActivity extends AppCompatActivity {
 
 		// Set FAB color based on result of test
 		DiagResultsContent.DiagResultItem resultItem =
-				DiagResultsContent.ITEM_MAP.get(getIntent().getStringExtra(RobotTestDetailFragment.ARG_ITEM_ID));
+				DiagResultsContent.ITEMS.get(Integer.parseInt(getIntent().getStringExtra(RobotTestDetailFragment.ARG_ITEM_ID)));
 
 		if (resultItem.result.toLowerCase().contains("pass")) {
 			fab.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorTestPassed)));
