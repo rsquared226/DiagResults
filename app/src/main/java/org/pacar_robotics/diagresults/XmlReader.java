@@ -1,7 +1,5 @@
 package org.pacar_robotics.diagresults;
 
-import android.app.Activity;
-import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 

@@ -39,7 +39,6 @@ public class RobotTestDetailActivity extends AppCompatActivity {
 			fab.setImageResource(R.drawable.ic_close_white_24dp);
 		}
 
-
 		// Show the Up button in the action bar.
 		ActionBar actionBar = getSupportActionBar();
 		if (actionBar != null) {
