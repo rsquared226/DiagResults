@@ -1,4 +1,9 @@
 <resources>
 	<string name="app_name">DiagnosticResults</string>
 	<string name="title_robottest_detail">Robot Test Detail</string>
+
+	<string name="detail_severity">Severity</string>
+	<string name="detail_result_message">Result Message</string>
+	<string name="detail_recommendation">Recommendation</string>
+	<string name="detail_description">Description</string>
 </resources>

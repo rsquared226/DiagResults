@@ -8,28 +8,28 @@
 
 	<TextView
 		style="@style/DetailHeader"
-		android:text="Severity"/>
+		android:text="@string/detail_severity"/>
 	<TextView
 		android:id="@+id/severity"
 		style="@style/DetailContent"/>
 
 	<TextView
 		style="@style/DetailHeader"
-		android:text="Result Message"/>
+		android:text="@string/detail_result_message"/>
 	<TextView
 		android:id="@+id/result_message"
 		style="@style/DetailContent"/>
 
 	<TextView
 		style="@style/DetailHeader"
-		android:text="Recommendation"/>
+		android:text="@string/detail_recommendation"/>
 	<TextView
 		android:id="@+id/recommendation"
 		style="@style/DetailContent"/>
 
 	<TextView
 		style="@style/DetailHeader"
-		android:text="Description"/>
+		android:text="@string/detail_description"/>
 	<TextView
 		android:id="@+id/description"
 		style="@style/DetailContent"/>
