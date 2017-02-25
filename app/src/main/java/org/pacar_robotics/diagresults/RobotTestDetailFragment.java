@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A fragment representing a single Robot Test detail screen.
@@ -42,12 +43,16 @@ public class RobotTestDetailFragment extends Fragment {
 			// Load the dummy content specified by the fragment
 			// arguments. In a real-world scenario, use a Loader
 			// to load content from a content provider.
-			mItem = DiagResultsContent.ITEMS.get(Integer.parseInt(getArguments().getString(ARG_ITEM_ID)));
+			try {
+				mItem = DiagResultsContent.ITEMS.get(Integer.parseInt(getArguments().getString(ARG_ITEM_ID)));
 
-			Activity activity = this.getActivity();
-			CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
-			if (appBarLayout != null) {
-				appBarLayout.setTitle(mItem.name);
+				Activity activity = this.getActivity();
+				CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
+				if (appBarLayout != null) {
+					appBarLayout.setTitle(mItem.name);
+				}
+			} catch (IndexOutOfBoundsException e) {
+				Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
@@ -59,10 +64,14 @@ public class RobotTestDetailFragment extends Fragment {
 
 		// Show the dummy content as text in a TextView.
 		if (mItem != null) {
-			((TextView) rootView.findViewById(R.id.severity)).setText(mItem.resultSeverity);
-			((TextView) rootView.findViewById(R.id.result_message)).setText(mItem.resultMessage);
-			((TextView) rootView.findViewById(R.id.recommendation)).setText(mItem.recommendation);
-			((TextView) rootView.findViewById(R.id.description)).setText(mItem.longDesc);
+			try {
+				((TextView) rootView.findViewById(R.id.severity)).setText(mItem.resultSeverity);
+				((TextView) rootView.findViewById(R.id.result_message)).setText(mItem.resultMessage);
+				((TextView) rootView.findViewById(R.id.recommendation)).setText(mItem.recommendation);
+				((TextView) rootView.findViewById(R.id.description)).setText(mItem.longDesc);
+			} catch (IndexOutOfBoundsException e) {
+				Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+			}
 		}
 
 		return rootView;

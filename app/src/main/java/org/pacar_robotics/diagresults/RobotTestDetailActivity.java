@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 /**
  * An activity representing a single Robot Test detail screen. This
@@ -27,16 +28,20 @@ public class RobotTestDetailActivity extends AppCompatActivity {
 
 		FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
-		// Set FAB color based on result of test
-		DiagResultsContent.DiagResultItem resultItem =
-				DiagResultsContent.ITEMS.get(Integer.parseInt(getIntent().getStringExtra(RobotTestDetailFragment.ARG_ITEM_ID)));
+		try {
+			// Set FAB color based on result of test
+			DiagResultsContent.DiagResultItem resultItem =
+					DiagResultsContent.ITEMS.get(Integer.parseInt(getIntent().getStringExtra(RobotTestDetailFragment.ARG_ITEM_ID)));
 
-		if (resultItem.result.toLowerCase().contains("pass")) {
-			fab.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorTestPassed)));
-			fab.setImageResource(R.drawable.ic_check_white_24dp);
-		} else {
-			fab.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorTestFailed)));
-			fab.setImageResource(R.drawable.ic_close_white_24dp);
+			if (resultItem.result.toLowerCase().contains("pass")) {
+				fab.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorTestPassed)));
+				fab.setImageResource(R.drawable.ic_check_white_24dp);
+			} else {
+				fab.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorTestFailed)));
+				fab.setImageResource(R.drawable.ic_close_white_24dp);
+			}
+		} catch (IndexOutOfBoundsException e) {
+			Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT ).show();
 		}
 
 		// Show the Up button in the action bar.
